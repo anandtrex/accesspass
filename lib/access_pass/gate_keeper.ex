@@ -35,8 +35,8 @@ defmodule AccessPass.GateKeeper do
     end
   end
 
-  def resend_confirm(user_obj) do
-    case repo().get_by(Users, username: user_obj.username) do
+  def resend_confirm(username) do
+    case repo().get_by(Users, username: username) do
       nil ->
         {:error, "failed to find user"}
       %AccessPass.Users{} = user ->
